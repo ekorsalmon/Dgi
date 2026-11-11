@@ -1,6 +1,6 @@
-// Isi dua baris di bawah dari Supabase > Project Settings > API (Data API)
-// Selama masih kosong, website tetap tampil dengan isi bawaan.
+// Isi dari Supabase > Project Settings > API Keys
+// Publishable key aman dipasang di website (dilindungi aturan akses di setup.sql).
 window.DGI_CONFIG = {
-  supabaseUrl: "",      // contoh: "https://abcdefghijk.supabase.co"
-  supabaseAnonKey: ""   // "publishable" atau "anon public" key (aman dipasang di website)
+  supabaseUrl: "https://goomeooxprqqyxbyalpn.supabase.co",
+  supabaseAnonKey: "sb_publishable_iZ4P0BAm86hsoQlgB3EkHg_xFwVGBvU"
 };
