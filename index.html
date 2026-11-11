@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dua Garis Imagi (DGI) | Biro Advertising Yogyakarta</title>
+<meta name="description" content="Dua Garis Imagi (DGI): branding, media luar ruang (OOH), aktivasi &amp; event, dan desain interior dari Yogyakarta.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="id_ID">
+<meta property="og:site_name" content="Dua Garis Imagi">
+<meta property="og:title" content="Dua Garis Imagi (DGI) | Biro Advertising Yogyakarta">
+<meta property="og:description" content="Branding, media luar ruang (OOH), aktivasi &amp; event, dan desain interior dari Yogyakarta.">
+<meta property="og:url" content="https://dgi-drab.vercel.app/">
+<meta property="og:image" content="https://dgi-drab.vercel.app/og-image.png">
+<link rel="canonical" href="https://dgi-drab.vercel.app/">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#09C7C0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+/* Kertas tosca terang, garis tinta 2px, judul grotesk + badan serif; gerak halus di atasnya */
+:root{
+  --paper:#F2FAF9; --ink:#0B2C2B; --muted:#3E6462; --line:#0B2C2B; --soft:#CFE6E3;
+  --gold:#09C7C0; --on-gold:#062524; --glow:rgba(9,199,192,.28);
+  --logo:grayscale(0); --logo-dim:grayscale(1);
+  --sans:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --gut:max(clamp(20px,5vw,48px),env(safe-area-inset-left,0px));
+  --gut-r:max(clamp(20px,5vw,48px),env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#071F1E;--ink:#E6F7F6;--muted:#9CC7C4;--line:#E6F7F6;--soft:#1C3D3B;--gold:#0FD6CE;--on-gold:#062524;--glow:rgba(15,214,206,.18);--logo:brightness(0) invert(1);--logo-dim:brightness(0) invert(1);color-scheme:dark}
+}
+:root[data-theme="dark"]{--paper:#071F1E;--ink:#E6F7F6;--muted:#9CC7C4;--line:#E6F7F6;--soft:#1C3D3B;--gold:#0FD6CE;--on-gold:#062524;--glow:rgba(15,214,206,.18);--logo:brightness(0) invert(1);--logo-dim:brightness(0) invert(1);color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.125rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:40}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+h1,h2,h3{font-family:var(--sans);margin:0;letter-spacing:-.02em;line-height:1.05;text-wrap:balance}
+
+/* lapisan gerak */
+.grain{position:fixed;inset:-50%;z-index:60;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
+.rv{opacity:.2;transform:translateY(36px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.cursor{position:fixed;left:0;top:0;z-index:70;pointer-events:none;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--gold);border:2px solid var(--line);color:var(--on-gold);display:grid;place-items:center;font-family:var(--sans);font-weight:700;font-size:.8rem;transition:width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1),margin .35s cubic-bezier(.2,.8,.2,1),opacity .3s,background .3s;opacity:0}
+.cursor span{opacity:0;transition:opacity .2s}
+.cursor.on{opacity:1}
+.cursor.big{width:84px;height:84px;margin:-42px 0 0 -42px}
+.cursor.big span{opacity:1}
+.cursor.link{width:36px;height:36px;margin:-18px 0 0 -18px;background:transparent}
+@media(hover:none),(pointer:coarse){.cursor{display:none}}
+
+/* tombol */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:1rem;background:var(--gold);color:var(--on-gold);padding:14px 26px;text-decoration:none;border:2px solid var(--line);border-radius:999px;cursor:pointer;will-change:transform;transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.btn.sm{padding:9px 18px;font-size:.92rem}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--paper);border-bottom:2px solid var(--line);z-index:30;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.hide-nav{transform:translateY(calc(-100% - env(safe-area-inset-top,0px)))}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:30px;width:auto;display:block}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-family:var(--sans);font-weight:500;font-size:.95rem}
+.nav ul a{text-decoration:none}
+.nav ul a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+.menu-btn{display:none;width:44px;height:44px;border:2px solid var(--line);border-radius:50%;background:var(--paper);color:var(--ink);cursor:pointer;place-items:center}
+.menu-btn span{display:block;width:16px;height:8px;border-top:2px solid currentColor;border-bottom:2px solid currentColor}
+@media(max-width:760px){.nav ul,.nav .btn{display:none}.menu-btn{display:grid}}
+.menu{position:fixed;inset:0;z-index:50;background:var(--paper);padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gut-r) calc(env(safe-area-inset-bottom,0px) + 28px) var(--gut);display:flex;flex-direction:column;gap:28px}
+.menu-top{display:flex;justify-content:space-between;align-items:center}
+.menu-close{width:44px;height:44px;border:2px solid var(--line);border-radius:50%;background:none;color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer}
+.menu nav{display:flex;flex-direction:column;border-top:2px solid var(--line)}
+.menu nav a{font-family:var(--sans);font-weight:700;font-size:clamp(2.2rem,10vw,3.4rem);letter-spacing:-.02em;text-decoration:none;padding:10px 0;border-bottom:2px solid var(--line)}
+.menu .btn{align-self:flex-start}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(28px,5vw,64px) 0 0}
+.hero::before{content:"";position:absolute;width:60vmax;height:60vmax;right:-22vmax;top:-18vmax;z-index:0;background:radial-gradient(closest-side,var(--glow),transparent);animation:float 16s ease-in-out infinite alternate;pointer-events:none}
+@keyframes float{to{transform:translate(-10vmax,8vmax) scale(1.1)}}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,8.2vw,6.4rem);font-weight:700;max-width:14ch;will-change:transform}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.hero h1 .ln>span{display:block;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.1s}
+@keyframes rise{from{transform:translateY(60%);opacity:0}to{transform:none;opacity:1}}
+.hero .lead{max-width:34em;color:var(--muted);margin:24px 0 32px;font-size:1.2rem;animation:fadeup .9s cubic-bezier(.2,.8,.2,1) .25s both}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;animation:fadeup .9s cubic-bezier(.2,.8,.2,1) .35s both}
+@keyframes fadeup{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
+.trust{margin-top:clamp(32px,5vw,48px);display:grid;gap:14px;animation:fadeup .9s cubic-bezier(.2,.8,.2,1) .45s both}
+.trust-label{margin:0;font-family:var(--sans);font-weight:500;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.logo-row{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.logo-track{display:flex;width:max-content;animation:slide 34s linear infinite}
+.logo-track ul{display:flex;align-items:center;gap:56px;list-style:none;margin:0;padding:6px 28px}
+.logo-track img{display:block;height:auto;filter:var(--logo);transition:filter .3s,opacity .3s}
+@media(hover:hover){.logo-track img{filter:var(--logo-dim);opacity:.65}.logo-track li:hover img{filter:var(--logo);opacity:1}}
+.logo-track .more{font-family:var(--sans);font-weight:700;font-size:1.05rem;white-space:nowrap;color:var(--muted)}
+@keyframes slide{to{transform:translateX(-50%)}}
+.cross{display:block;width:100%;height:auto;margin-top:clamp(20px,4vw,40px);overflow:visible;will-change:transform}
+.cross .ln{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round}
+.cross .dot{fill:var(--gold);stroke:var(--ink);stroke-width:3}
+.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.8s cubic-bezier(.6,0,.2,1) .3s forwards}
+.draw.b{animation-delay:.55s}
+.dot{transform-box:fill-box;transform-origin:center;transform:scale(0);animation:pop .5s cubic-bezier(.3,1.6,.5,1) 2.1s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{transform:scale(1)}}
+
+/* strip berjalan */
+.marquee{overflow:hidden;background:var(--gold);color:var(--on-gold);border-block:2px solid var(--line)}
+.marquee-track{display:flex;width:max-content;animation:slide 30s linear infinite}
+.marquee-track>div{display:flex;align-items:center;gap:32px;padding:16px}
+.marquee .w{font-family:var(--sans);font-weight:700;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.02em;white-space:nowrap}
+.marquee .eq{display:inline-block;width:30px;height:15px;border-top:4px solid var(--on-gold);border-bottom:4px solid var(--on-gold);flex:none}
+.js-marq .marquee-track,.js-marq .logo-track{animation:none}
+
+/* section */
+section{padding-block:clamp(64px,10vw,120px)}
+.rule{border-top:2px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:48px}
+.sec-head h2{font-size:clamp(2rem,5vw,3.4rem);max-width:16ch}
+.sec-head p{max-width:34em;color:var(--muted);margin:0}
+@media(min-width:860px){.sec-head{grid-template-columns:1.1fr 1fr auto;align-items:end}}
+
+/* layanan */
+.svc{list-style:none;margin:0;padding:0;border-top:2px solid var(--line)}
+.svc li{border-bottom:2px solid var(--line)}
+.svc a{display:grid;grid-template-columns:1fr auto;gap:8px 40px;align-items:center;padding:28px 0;text-decoration:none;position:relative}
+.svc a::before{content:"";position:absolute;inset:0 calc(-1 * var(--gut));background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .45s cubic-bezier(.2,.8,.2,1);z-index:-1}
+.svc li{position:relative;z-index:0}
+.svc a:hover::before{transform:scaleY(1)}
+.svc a:hover{color:var(--on-gold)}
+.svc a:hover p{color:var(--on-gold)}
+.svc h3{font-size:clamp(1.6rem,3.6vw,2.5rem);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.svc a:hover h3{transform:translateX(10px)}
+.svc p{grid-column:1/-1;margin:0;color:var(--muted);max-width:36em;transition:color .3s}
+.svc .go{width:48px;height:48px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.8,.2,1),background .3s}
+.svc .go svg{width:18px;height:18px}
+.svc a:hover .go{transform:rotate(-45deg);background:var(--paper);color:var(--ink)}
+@media(min-width:860px){.svc a{grid-template-columns:1fr 1.2fr auto}.svc p{grid-column:auto}}
+
+/* proyek slider */
+.arrows{display:flex;gap:10px}
+.arrow{width:50px;height:50px;border-radius:50%;border:2px solid var(--line);background:var(--paper);color:var(--ink);display:grid;place-items:center;cursor:pointer;will-change:transform;transition:background .2s,color .2s}
+.arrow:hover{background:var(--ink);color:var(--paper)}
+.arrow svg{width:20px;height:20px}
+.slider{display:grid;grid-auto-flow:column;grid-auto-columns:min(76vw,380px);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;list-style:none;margin:0;padding:0 var(--gut-r) 8px var(--gut);scroll-padding-left:var(--gut)}
+.slider::-webkit-scrollbar{display:none}
+@media(min-width:1120px){.slider{padding-left:calc((100vw - 1120px)/2 + var(--gut));scroll-padding-left:calc((100vw - 1120px)/2 + var(--gut))}}
+@media(hover:hover){.slider{cursor:grab}}
+.slider.drag{scroll-snap-type:none;cursor:grabbing;user-select:none}
+.slider.drag a{pointer-events:none}
+.card{scroll-snap-align:start;min-width:0}
+.card a{display:block;text-decoration:none}
+.card .media{position:relative;aspect-ratio:4/5;max-width:100%;border:2px solid var(--line);border-radius:4px;overflow:hidden;background:var(--soft);transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s cubic-bezier(.2,.8,.2,1)}
+.card a:hover .media{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--gold)}
+.card .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.card a:hover .media img{transform:scale(1.05)}
+.card .num,.card .dummy{position:absolute;top:12px;z-index:1;font-family:var(--sans);font-weight:700;font-size:.78rem;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:999px;padding:3px 10px}
+.card .num{left:12px}
+.card .dummy{right:12px;font-weight:500}
+.card h3{font-size:1.5rem;margin:18px 0 4px}
+.card p{margin:0;color:var(--muted)}
+.card .tag{font-family:var(--sans);font-weight:500;font-size:.9rem;color:var(--ink)}
+.progress{height:2px;background:var(--soft);margin-top:32px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--ink);transform-origin:left;transform:scaleX(.25);transition:transform .2s linear}
+
+/* pendekatan */
+.two{display:grid;gap:0;border:2px solid var(--line)}
+.two div{padding:clamp(24px,4vw,44px);transition:background .4s}
+.two div:hover{background:var(--soft)}
+.two div+div{border-top:2px solid var(--line)}
+.two h3{font-size:1.6rem;margin-bottom:10px}
+.two p{margin:0;color:var(--muted)}
+@media(min-width:760px){.two{grid-template-columns:1fr 1fr}.two div+div{border-top:0;border-left:2px solid var(--line)}}
+.join{font-family:var(--sans);font-weight:700;font-size:clamp(1.5rem,3.4vw,2.4rem);max-width:22em;margin:44px 0 0;letter-spacing:-.02em;line-height:1.15}
+.join em{font-style:normal;background:linear-gradient(var(--gold),var(--gold)) 0 88%/0 .32em no-repeat;transition:background-size 1s cubic-bezier(.2,.8,.2,1) .3s}
+.join.in em,.join:not(.rv) em{background-size:100% .32em}
+
+/* proses */
+.steps-wrap{position:relative}
+.steps-line{position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--soft)}
+.steps-line i{display:block;width:100%;height:100%;background:var(--line);transform-origin:top;transform:scaleY(0)}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:0;position:relative}
+.steps li{counter-increment:s;position:relative;padding:0 0 40px 34px}
+.steps li::before{content:counter(s);position:absolute;left:-15px;top:-2px;width:32px;height:32px;border-radius:50%;background:var(--paper);color:var(--ink);border:2px solid var(--line);font-family:var(--sans);font-weight:700;font-size:.95rem;display:grid;place-items:center;transition:background .4s,color .4s}
+.steps li.on::before{background:var(--gold);color:var(--on-gold)}
+.steps li:last-child{padding-bottom:0}
+.steps h3{font-size:1.5rem;margin-bottom:4px}
+.steps p{margin:0;color:var(--muted);max-width:36em}
+
+/* kontak */
+.cta{background:var(--ink);color:var(--paper)}
+.cta h2{font-size:clamp(2.2rem,6vw,4.4rem);max-width:15ch}
+.cta .intro{max-width:32em;margin:22px 0 0;opacity:.85}
+.contact-grid{display:grid;gap:40px;margin-top:40px}
+@media(min-width:860px){.contact-grid{grid-template-columns:1fr 1.3fr;gap:64px}}
+.direct{display:grid;gap:18px;align-content:start}
+.direct p{margin:0;opacity:.85}
+.small-label{font-family:var(--sans);font-weight:500;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin:0 0 6px}
+.phone{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.phone strong{font-family:var(--sans);font-weight:700;font-size:clamp(1.8rem,4.5vw,2.4rem);letter-spacing:-.01em;user-select:all}
+.copy{font-family:var(--sans);font-weight:500;font-size:.85rem;padding:7px 14px;border-radius:999px;border:2px solid var(--paper);background:none;color:var(--paper);cursor:pointer}
+.copy:hover{background:var(--paper);color:var(--ink)}
+.cta form{display:grid;gap:18px}
+.row{display:grid;gap:18px}
+@media(min-width:560px){.row{grid-template-columns:1fr 1fr}}
+.cta label{display:grid;gap:6px;font-family:var(--sans);font-weight:500;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+.cta input,.cta textarea{font-family:var(--serif);font-size:1.1rem;color:var(--paper);background:transparent;border:0;border-bottom:2px solid color-mix(in srgb,var(--paper) 35%,transparent);padding:8px 0;border-radius:0;width:100%;transition:border-color .2s;text-transform:none;letter-spacing:0}
+.cta input::placeholder,.cta textarea::placeholder{color:color-mix(in srgb,var(--paper) 45%,transparent)}
+.cta input:focus,.cta textarea:focus{outline:none;border-color:var(--gold)}
+.cta textarea{resize:vertical;min-height:100px}
+.cta .btn{border-color:var(--paper)}
+.cta .btn:hover{background:var(--paper);color:var(--ink)}
+.form-note{margin:0;font-size:.95rem;opacity:.75}
+.form-err{margin:0;font-family:var(--sans);font-size:.95rem;color:var(--gold)}
+
+/* penutup */
+.mega{overflow:hidden;padding-top:clamp(24px,4vw,48px);border-bottom:2px solid var(--line)}
+.mega p{margin:0;font-family:var(--sans);font-weight:700;font-size:clamp(3rem,13vw,10.5rem);letter-spacing:-.04em;line-height:.85;white-space:nowrap;text-align:center;color:transparent;-webkit-text-stroke:2px var(--line);transition:color .5s}
+.mega:hover p{color:var(--gold)}
+footer{padding-block:28px;font-family:var(--sans);font-size:.92rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px}
+footer nav{display:flex;flex-wrap:wrap;gap:20px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+.wa-float{display:none}
+@media(max-width:760px){
+  .wa-float{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;display:flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:700;font-size:.95rem;text-decoration:none;background:var(--gold);color:var(--on-gold);padding:12px 18px;border:2px solid var(--line);border-radius:999px;box-shadow:4px 4px 0 var(--line)}
+  .wa-float svg{width:20px;height:20px}
+  footer{padding-bottom:96px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .draw{stroke-dashoffset:0}.dot{transform:scale(1)}
+  .rv{opacity:1;transform:none}
+  .marquee-track,.logo-track{width:auto;flex-wrap:wrap}
+  .marquee-track>div[aria-hidden],.logo-track>ul[aria-hidden]{display:none}
+  .join em{background-size:100% .32em}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span></span></div>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#atas" aria-label="Dua Garis Imagi, ke atas"><img src="dgi-logo.png" alt="DGI" width="104" height="30"></a>
+    <ul>
+      <li><a href="#layanan">Layanan</a></li>
+      <li><a href="#proyek">Proyek</a></li>
+      <li><a href="#pendekatan">Pendekatan</a></li>
+      <li><a href="#proses">Proses</a></li>
+    </ul>
+    <a class="btn sm" href="#kontak">Ajak ngobrol</a>
+    <button class="menu-btn" id="menu-open" aria-label="Buka menu" aria-controls="menu" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <div class="menu-top">
+    <img src="dgi-logo.png" alt="DGI" width="104" height="30" style="height:30px;width:auto">
+    <button class="menu-close" id="menu-close" aria-label="Tutup menu">&times;</button>
+  </div>
+  <nav aria-label="Menu utama">
+    <a href="#layanan">Layanan</a>
+    <a href="#proyek">Proyek</a>
+    <a href="#pendekatan">Pendekatan</a>
+    <a href="#proses">Proses</a>
+  </nav>
+  <a class="btn" href="#kontak">Ajak ngobrol</a>
+</div>
+
+<main id="atas">
+  <div class="hero">
+    <div class="wrap">
+      <h1 id="hero-h1">
+        <span class="ln"><span data-k="hero_line1">Dua garis bertemu,</span></span>
+        <span class="ln"><span data-k="hero_line2">jadi satu imagi.</span></span>
+      </h1>
+      <p class="lead" data-k="hero_lead">Dua Garis Imagi (DGI) adalah biro advertising dari Yogyakarta. Dari identitas brand, billboard, event, sampai ruang usaha, kami merapikan semuanya supaya apa yang dikatakan sebuah bisnis sama dengan apa yang dirasakan orang.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#kontak">Mulai proyek</a>
+        <a class="btn ghost" href="#proyek">Lihat proyek <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="trust" id="trust">
+        <p class="trust-label" data-k="clients_label">Dipercaya oleh</p>
+        <div class="logo-row">
+          <div class="logo-track">
+            <ul id="logos-a"><li><img src="klien-djarum.png" alt="Djarum" width="94" height="25"></li><li><img src="klien-ktg.png" alt="KT&amp;G" width="76" height="30"></li><li><img src="klien-nojorono.png" alt="Nojorono" width="72" height="32"></li><li><img src="klien-paragon.png" alt="Paragon Corp" width="120" height="16"></li><li><img src="klien-gajahbaru.png" alt="Gajah Baru" width="42" height="44"></li><li><img src="klien-wismilak.png" alt="Wismilak" width="41" height="44"></li><li class="more" data-k="clients_more">and many more</li></ul>
+            <ul id="logos-b" aria-hidden="true"><li><img src="klien-djarum.png" alt="Djarum" width="94" height="25"></li><li><img src="klien-ktg.png" alt="KT&amp;G" width="76" height="30"></li><li><img src="klien-nojorono.png" alt="Nojorono" width="72" height="32"></li><li><img src="klien-paragon.png" alt="Paragon Corp" width="120" height="16"></li><li><img src="klien-gajahbaru.png" alt="Gajah Baru" width="42" height="44"></li><li><img src="klien-wismilak.png" alt="Wismilak" width="41" height="44"></li><li class="more" data-k="clients_more">and many more</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <svg class="cross" id="cross" viewBox="0 0 1200 220" role="img" aria-label="Dua garis yang bersilangan di satu titik">
+      <path class="ln draw" pathLength="1" d="M0 40 C 380 40, 440 110, 600 110 S 900 180, 1200 180"/>
+      <path class="ln draw b" pathLength="1" d="M0 180 C 380 180, 440 110, 600 110 S 900 40, 1200 40"/>
+      <circle class="dot" cx="600" cy="110" r="16"/>
+    </svg>
+  </div>
+
+  <div class="marquee" id="marquee" aria-label="Layanan DGI">
+    <div class="marquee-track">
+      <div id="marq-a"><span class="w">Branding &amp; placement</span><span class="eq"></span><span class="w">Media luar ruang (OOH)</span><span class="eq"></span><span class="w">Aktivasi &amp; event (EO)</span><span class="eq"></span><span class="w">Desain interior</span><span class="eq"></span><span class="w">Branding &amp; placement</span><span class="eq"></span><span class="w">Media luar ruang (OOH)</span><span class="eq"></span><span class="w">Aktivasi &amp; event (EO)</span><span class="eq"></span><span class="w">Desain interior</span><span class="eq"></span></div>
+      <div id="marq-b" aria-hidden="true"><span class="w">Branding &amp; placement</span><span class="eq"></span><span class="w">Media luar ruang (OOH)</span><span class="eq"></span><span class="w">Aktivasi &amp; event (EO)</span><span class="eq"></span><span class="w">Desain interior</span><span class="eq"></span><span class="w">Branding &amp; placement</span><span class="eq"></span><span class="w">Media luar ruang (OOH)</span><span class="eq"></span><span class="w">Aktivasi &amp; event (EO)</span><span class="eq"></span><span class="w">Desain interior</span><span class="eq"></span></div>
+    </div>
+  </div>
+
+  <section id="layanan">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-k="services_title">Empat hal yang kami kerjakan</h2>
+        <p data-k="services_lead">Brand yang kuat bukan hanya logo. Ia terlihat di jalan, terasa di ruang, dan hidup di acara tempat orang bertemu langsung.</p>
+      </div>
+      <ul class="svc" id="svc-list"><li><a href="#kontak"><h3>Branding &amp; placement</h3><p>Strategi brand, identitas visual, dan penempatannya di titik yang dilihat pelanggan, supaya brand dikenali di mana pun muncul.</p><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a href="#kontak"><h3>Media luar ruang (OOH)</h3><p>Billboard, baliho, dan media jalanan yang dirancang supaya pesannya terbaca dalam hitungan detik.</p><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a href="#kontak"><h3>Aktivasi &amp; event (EO)</h3><p>Aktivasi brand dan event dari konsep sampai hari pelaksanaan, tempat brand bertemu orangnya secara langsung.</p><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a href="#kontak"><h3>Desain interior</h3><p>Ruang usaha, kantor, dan tempat makan yang dirancang mengikuti karakter brand, bukan sekadar mengikuti tren.</p><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li></ul>
+    </div>
+  </section>
+
+  <section id="proyek" class="rule">
+    <div class="wrap sec-head">
+      <h2 data-k="projects_title">Proyek pilihan</h2>
+      <p data-k="projects_lead">Beberapa kerja yang sudah kami hadirkan untuk brand dan bisnis dari berbagai bidang.</p>
+      <div class="arrows">
+        <button class="arrow" id="prev" aria-label="Proyek sebelumnya"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="arrow" id="next" aria-label="Proyek berikutnya"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+    <ul class="slider" id="slider" data-cursor="Geser"><li class="card"><a href="#kontak"><div class="media"><span class="num">01</span><img src="proyek-ooh.jpg" alt="Media luar ruang" width="800" height="1000" loading="lazy" decoding="async"></div><h3>Media luar ruang</h3><p><span class="tag">OOH</span>. Billboard, baliho, dan media jalanan yang terbaca dalam hitungan detik.</p></a></li><li class="card"><a href="#kontak"><div class="media"><span class="num">02</span><img src="proyek-interior.jpg" alt="Desain interior" width="800" height="1000" loading="lazy" decoding="async"></div><h3>Desain interior</h3><p><span class="tag">Interior</span>. Ruang usaha dan kantor yang terasa sesuai karakter brand-nya.</p></a></li><li class="card"><a href="#kontak"><div class="media"><span class="num">03</span><img src="proyek-event.jpg" alt="Aktivasi &amp; event" width="800" height="1000" loading="lazy" decoding="async"></div><h3>Aktivasi &amp; event</h3><p><span class="tag">Activation / EO</span>. Event dan aktivasi yang mempertemukan brand langsung dengan orangnya.</p></a></li><li class="card"><a href="#kontak"><div class="media"><span class="num">04</span><img src="proyek-branding.jpg" alt="Branding &amp; placement" width="800" height="1000" loading="lazy" decoding="async"></div><h3>Branding &amp; placement</h3><p><span class="tag">Branding / Placement</span>. Identitas brand dan penempatannya di titik yang dilihat pelanggan.</p></a></li></ul>
+    <div class="wrap"><div class="progress" aria-hidden="true"><i id="prog"></i></div></div>
+  </section>
+
+  <section id="pendekatan" class="rule">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-k="approach_title">Kenapa namanya dua garis</h2>
+        <p data-k="approach_lead">Setiap brand punya dua garis. Selama keduanya sejajar tanpa pernah bertemu, orang merasa ada yang janggal.</p>
+      </div>
+      <div class="two">
+        <div><h3 data-k="line1_title">Garis pertama: yang dikatakan</h3><p data-k="line1_text">Janji, nilai, dan cerita yang ingin disampaikan bisnis lewat iklan, kemasan, dan media sosial.</p></div>
+        <div><h3 data-k="line2_title">Garis kedua: yang dirasakan</h3><p data-k="line2_text">Pengalaman nyata pelanggan: suasana ruang, momen di acara, dan layanan sehari-hari.</p></div>
+      </div>
+      <p class="join"><span data-k="join_text">Kerja kami adalah</span> <em data-k="join_highlight">mempertemukan keduanya.</em></p>
+    </div>
+  </section>
+
+  <section id="proses" class="rule">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-k="process_title">Cara kami bekerja</h2>
+        <p data-k="process_lead">Empat tahap, dari ngobrol pertama sampai hasilnya dipakai sehari-hari.</p>
+      </div>
+      <div class="steps-wrap">
+        <div class="steps-line" aria-hidden="true"><i id="stepbar"></i></div>
+        <ol class="steps" id="steps">
+          <li><h3 data-k="step1_title">Dengar</h3><p data-k="step1_text">Kami mulai dari bisnis Anda: tujuan, pelanggan, dan masalah yang sedang dihadapi.</p></li>
+          <li><h3 data-k="step2_title">Petakan</h3><p data-k="step2_text">Kami cek di mana kedua garis belum bertemu, lalu menentukan arah brand.</p></li>
+          <li><h3 data-k="step3_title">Rancang</h3><p data-k="step3_text">Identitas, materi OOH, konsep event, atau desain ruang disusun sesuai arah itu.</p></li>
+          <li><h3 data-k="step4_title">Hadirkan</h3><p data-k="step4_text">Kami dampingi sampai terpasang, berjalan, dan terlihat hasilnya.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak" class="cta">
+    <div class="wrap">
+      <h2 data-k="cta_title">Punya brand yang ingin dirapikan?</h2>
+      <p class="intro" data-k="cta_intro">Ceritakan kebutuhan Anda. Isi formulirnya, pesan langsung tersusun di WhatsApp kami.</p>
+      <div class="contact-grid">
+        <div class="direct">
+          <div>
+            <p class="small-label">WhatsApp</p>
+            <div class="phone"><strong id="wa-num" data-k="wa_number">0817-4802-222</strong><button class="copy" id="copy" type="button">Salin</button></div>
+          </div>
+          <div>
+            <p class="small-label">Lokasi</p>
+            <p data-k="location">Yogyakarta, Indonesia</p>
+          </div>
+        </div>
+        <form id="form" novalidate>
+          <div class="row">
+            <label for="f-nama">Nama<input id="f-nama" name="nama" autocomplete="name" placeholder="Nama Anda"></label>
+            <label for="f-bisnis">Brand / perusahaan<input id="f-bisnis" name="bisnis" autocomplete="organization" placeholder="Nama brand"></label>
+          </div>
+          <label for="f-butuh">Kebutuhan<input id="f-butuh" name="butuh" placeholder="Branding, OOH, event, atau interior"></label>
+          <label for="f-pesan">Pesan<textarea id="f-pesan" name="pesan" placeholder="Ceritakan singkat proyeknya"></textarea></label>
+          <p class="form-err" id="form-err" hidden>Isi nama dan pesan dulu ya, supaya kami tahu harus membalas siapa.</p>
+          <div><a class="btn" id="send" href="https://wa.me/628174802222">Kirim lewat WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+          <p class="form-note">Tombol ini membuka WhatsApp dengan pesan yang sudah terisi. Anda tinggal tekan kirim.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="mega" aria-hidden="true"><p>Dua Garis Imagi</p></div>
+<footer>
+  <div class="wrap">
+    <span>Dua Garis Imagi (DGI), Yogyakarta</span>
+    <nav aria-label="Tautan footer">
+      <a href="#layanan">Layanan</a><a href="#proyek">Proyek</a><a href="#kontak">Kontak</a>
+      <a id="ig" href="#" hidden>Instagram</a>
+    </nav>
+    <span>&copy; 2026 DGI. Seluruh hak dilindungi.</span>
+  </div>
+</footer>
+
+<a class="wa-float" id="wa-float" href="https://wa.me/628174802222?text=Halo%20DGI%2C%20saya%20ingin%20berdiskusi%20soal%20brand%20saya." aria-label="Chat DGI lewat WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4A1.5 1.5 0 0 1 4 14.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+  <span>Chat WA</span>
+</a>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* Isi website dari panel admin (Supabase). Kalau gagal dimuat, isi bawaan di halaman tetap tampil. */
+(function(){
+  var CFG=window.DGI_CONFIG||{}, CACHE="dgi-content-v1";
+  var ARROW='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function $(id){return document.getElementById(id);}
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+  function waIntl(n){var d=String(n||"").replace(/\D/g,"");if(d.charAt(0)==="0")d="62"+d.slice(1);return d;}
+  window.DGI_wa=waIntl(($("wa-num")||{}).textContent);
+
+  function fitLogo(img){
+    function go(){var w=img.naturalWidth,h=img.naturalHeight;if(!w||!h)return;var a=w/h,hh=Math.sqrt(2300/a),ww=a*hh;
+      if(ww>120){ww=120;hh=ww/a;} if(hh>44){hh=44;ww=a*hh;}
+      img.width=Math.round(ww);img.height=Math.round(hh);}
+    if(img.complete)go();else img.addEventListener("load",go,{once:true});
+  }
+
+  function apply(d){
+    var kv=d.kv||{};
+    document.querySelectorAll("[data-k]").forEach(function(n){var v=kv[n.getAttribute("data-k")];if(typeof v==="string"&&v.trim()!=="")n.textContent=v;});
+    if(kv.wa_number){window.DGI_wa=waIntl(kv.wa_number);var f=$("wa-float");if(f)f.href="https://wa.me/"+window.DGI_wa+"?text="+encodeURIComponent("Halo DGI, saya ingin berdiskusi soal brand saya.");}
+    var ig=$("ig");if(ig){var u=(kv.instagram_url||"").trim();if(/^https:\/\//i.test(u)){ig.href=u;ig.hidden=false;}else ig.hidden=true;}
+
+    if(Array.isArray(d.services)){
+      var ul=$("svc-list");ul.textContent="";
+      d.services.forEach(function(s){var li=el("li"),a=el("a");a.href="#kontak";a.appendChild(el("h3",null,s.title));a.appendChild(el("p",null,s.description));var g=el("span","go");g.innerHTML=ARROW;a.appendChild(g);li.appendChild(a);ul.appendChild(li);});
+      $("layanan").hidden=!d.services.length;
+      var titles=d.services.map(function(s){return s.title;}).filter(Boolean);
+      ["marq-a","marq-b"].forEach(function(id){var box=$(id);box.textContent="";titles.concat(titles).forEach(function(t){box.appendChild(el("span","w",t));box.appendChild(el("span","eq"));});});
+      $("marquee").hidden=!titles.length;
+    }
+    if(Array.isArray(d.projects)){
+      var sl=$("slider");sl.textContent="";
+      d.projects.forEach(function(p,i){
+        var li=el("li","card"),a=el("a"),m=el("div","media");a.href="#kontak";
+        m.appendChild(el("span","num",(i<9?"0":"")+(i+1)));
+        if(p.image_url){var im=el("img");im.src=p.image_url;im.alt=p.title||"Foto proyek";im.width=800;im.height=1000;im.loading="lazy";im.decoding="async";m.appendChild(im);}
+        a.appendChild(m);a.appendChild(el("h3",null,p.title));
+        var para=el("p");if(p.tag){para.appendChild(el("span","tag",p.tag));para.appendChild(document.createTextNode(". "));}para.appendChild(document.createTextNode(p.description||""));a.appendChild(para);
+        li.appendChild(a);sl.appendChild(li);
+      });
+      $("proyek").hidden=!d.projects.length;
+    }
+    if(Array.isArray(d.clients)){
+      ["logos-a","logos-b"].forEach(function(id){
+        var ul=$(id),moreTxt=Object.prototype.hasOwnProperty.call(kv,"clients_more")?String(kv.clients_more||"").trim():((ul.querySelector(".more")||{}).textContent||"");ul.textContent="";
+        d.clients.forEach(function(c){if(!c.logo_url)return;var li=el("li"),im=el("img");im.src=c.logo_url;im.alt=c.name||"Logo klien";li.appendChild(im);ul.appendChild(li);fitLogo(im);});
+        if(moreTxt){var mo=el("li","more",moreTxt);mo.setAttribute("data-k","clients_more");ul.appendChild(mo);}
+      });
+      $("trust").hidden=!d.clients.length;
+    }
+    document.dispatchEvent(new CustomEvent("dgi:content"));
+  }
+
+  // 1) tampilkan isi terakhir yang tersimpan di browser ini (biar tidak berkedip)
+  try{var c=JSON.parse(localStorage.getItem(CACHE)||"null");if(c&&c.kv)apply(c);}catch(e){}
+
+  // 2) ambil isi terbaru dari Supabase
+  var url=(CFG.supabaseUrl||"").trim().replace(/\/+$/,""),key=(CFG.supabaseAnonKey||"").trim();
+  if(!/^https:\/\//.test(url)||!key)return;
+  function get(path){return fetch(url+"/rest/v1/"+path,{headers:{apikey:key}}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});}
+  Promise.all([
+    get("content?select=key,value"),
+    get("services?select=title,description&order=sort_order.asc"),
+    get("projects?select=title,tag,description,image_url&order=sort_order.asc"),
+    get("clients?select=name,logo_url&order=sort_order.asc")
+  ]).then(function(r){
+    var kv={};r[0].forEach(function(x){kv[x.key]=x.value;});
+    var d={kv:kv,services:r[1],projects:r[2],clients:r[3]};
+    try{localStorage.setItem(CACHE,JSON.stringify(d));}catch(e){}
+    apply(d);
+  }).catch(function(){/* tetap pakai isi bawaan */});
+})();
+
+</script>
+<script>
+(function(){
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine=matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var lenis=null;
+  try{ if(!reduce && window.Lenis){ lenis=new Lenis({duration:1.15,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true}); } }catch(e){lenis=null;}
+  if(!lenis) document.documentElement.style.scrollBehavior=reduce?"auto":"smooth";
+  function sy(){return window.scrollY||document.documentElement.scrollTop||0;}
+
+  // menu HP
+  var menu=document.getElementById("menu"),openB=document.getElementById("menu-open"),closeB=document.getElementById("menu-close");
+  function setMenu(o){menu.hidden=!o;openB.setAttribute("aria-expanded",o);document.body.style.overflow=o?"hidden":"";if(lenis){o?lenis.stop():lenis.start();}if(o)closeB.focus();}
+  openB.addEventListener("click",function(){setMenu(true)});
+  closeB.addEventListener("click",function(){setMenu(false)});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!menu.hidden)setMenu(false)});
+
+  // tautan jangkar
+  document.addEventListener("click",function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a) return;
+    var id=a.getAttribute("href"); var el=id.length>1?document.querySelector(id):null; if(!el) return;
+    e.preventDefault(); if(!menu.hidden) setMenu(false);
+    if(lenis) lenis.scrollTo(el,{offset:-64}); else el.scrollIntoView({behavior:reduce?"auto":"smooth"});
+  });
+
+  // muncul saat di-scroll (hanya yang di bawah layar saat dimuat)
+  if(!reduce && "IntersectionObserver" in window){
+    var vh=innerHeight, io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}})},{rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll(".sec-head,.svc li,.card,.two,.join,.steps li,.cta h2,.cta .intro,.direct,#form,.mega p").forEach(function(el){
+      if(el.getBoundingClientRect().top>vh*0.92){
+        el.classList.add("rv");
+        var i=el.parentElement?Array.prototype.indexOf.call(el.parentElement.children,el):0;
+        el.style.transitionDelay=(Math.min(i,4)*0.08)+"s"; io.observe(el);
+      }
+    });
+  }
+
+  // kursor + tombol magnet
+  var cur=document.getElementById("cursor"),cx=-100,cy=-100,tx=-100,ty=-100;
+  if(fine && !reduce){
+    addEventListener("mousemove",function(e){tx=e.clientX;ty=e.clientY;cur.classList.add("on");},{passive:true});
+    document.addEventListener("mouseleave",function(){cur.classList.remove("on")});
+    document.addEventListener("mouseover",function(e){
+      var lab=e.target.closest("[data-cursor]"), lk=e.target.closest("a,button,input,textarea");
+      cur.classList.toggle("big",!!lab); cur.classList.toggle("link",!lab&&!!lk);
+      cur.firstElementChild.textContent=lab?lab.getAttribute("data-cursor"):"";
+    });
+    document.querySelectorAll(".btn,.arrow,.menu-btn").forEach(function(b){
+      b.addEventListener("mousemove",function(e){var r=b.getBoundingClientRect();b.style.transform="translate("+((e.clientX-r.left-r.width/2)*.25)+"px,"+((e.clientY-r.top-r.height/2)*.3)+"px)";});
+      b.addEventListener("mouseleave",function(){b.style.transition="transform .5s cubic-bezier(.2,.8,.2,1),background .2s,color .2s";b.style.transform="";setTimeout(function(){b.style.transition=""},500);});
+    });
+  } else if(cur){cur.remove();cur=null;}
+
+  // slider: panah, drag, progres
+  var sl=document.getElementById("slider"),prog=document.getElementById("prog");
+  function step(d){var c=sl.querySelector(".card");var w=c?c.getBoundingClientRect().width+24:400;sl.scrollBy({left:d*w,behavior:"smooth"});}
+  document.getElementById("prev").addEventListener("click",function(){step(-1)});
+  document.getElementById("next").addEventListener("click",function(){step(1)});
+  function setProg(){var m=sl.scrollWidth-sl.clientWidth;var v=sl.clientWidth/sl.scrollWidth;var p=m>0?sl.scrollLeft/m:0;prog.style.transform="scaleX("+(v+(1-v)*p)+")";}
+  sl.addEventListener("scroll",setProg,{passive:true}); addEventListener("resize",setProg); setProg();
+  if(fine){
+    var down=false,moved=0,sx=0,sl0=0,lastX=0,vel=0;
+    sl.addEventListener("pointerdown",function(e){if(e.pointerType!=="mouse")return;down=true;moved=0;sx=lastX=e.clientX;sl0=sl.scrollLeft;vel=0;});
+    addEventListener("pointermove",function(e){if(!down)return;var dx=e.clientX-sx;moved=Math.max(moved,Math.abs(dx));if(moved>5)sl.classList.add("drag");vel=e.clientX-lastX;lastX=e.clientX;sl.scrollLeft=sl0-dx;});
+    addEventListener("pointerup",function(){if(!down)return;down=false;if(sl.classList.contains("drag")){sl.scrollBy({left:vel*-14,behavior:"smooth"});setTimeout(function(){sl.classList.remove("drag")},360);}});
+    sl.addEventListener("dragstart",function(e){e.preventDefault()});
+  }
+
+  // salin nomor
+  var cp=document.getElementById("copy");
+  cp.addEventListener("click",function(){
+    function done(){cp.textContent="Tersalin";setTimeout(function(){cp.textContent="Salin"},1800);}
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById("wa-num"));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent="Sudah dipilih";}
+    try{navigator.clipboard.writeText(document.getElementById("wa-num").textContent.trim()).then(done,fallback);}catch(e){fallback();}
+  });
+
+  // formulir -> WhatsApp
+  var send=document.getElementById("send"),err=document.getElementById("form-err");
+  function val(id){return document.getElementById(id).value.trim();}
+  function build(){
+    var lines=["Halo DGI, saya "+(val("f-nama")||"...")+(val("f-bisnis")?" dari "+val("f-bisnis"):"")+"."];
+    if(val("f-butuh"))lines.push("Kebutuhan: "+val("f-butuh"));
+    if(val("f-pesan"))lines.push(val("f-pesan"));
+    send.href="https://wa.me/"+(window.DGI_wa||"628174802222")+"?text="+encodeURIComponent(lines.join("\n"));
+  }
+  document.getElementById("form").addEventListener("input",function(){build();if(val("f-nama")&&val("f-pesan"))err.hidden=true;});
+  send.addEventListener("click",function(e){if(!val("f-nama")||!val("f-pesan")){e.preventDefault();err.hidden=false;}});
+  document.getElementById("form").addEventListener("submit",function(e){e.preventDefault();});
+  build();
+  document.addEventListener("dgi:content",function(){setProg();build();});
+
+  // loop gerak: header, parallax, marquee, kursor, proses
+  var hdr=document.getElementById("top"),lastY=sy();
+  var tracks=[];
+  if(!reduce){
+    document.documentElement.classList.add("js-marq");
+    [[".marquee-track",1.1],[".logo-track",.5]].forEach(function(p){var el=document.querySelector(p[0]);if(el)tracks.push({el:el,x:0,base:p[1],dir:1});});
+  }
+  var h1=document.getElementById("hero-h1"),cross=document.getElementById("cross");
+  var stepsEl=document.getElementById("steps"),stepbar=document.getElementById("stepbar"),stepLis=stepsEl.querySelectorAll("li");
+  var mx=0,my=0; if(fine) addEventListener("mousemove",function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;},{passive:true});
+  var prevY=sy(),t0=performance.now();
+  function frame(now){
+    if(lenis) lenis.raf(now);
+    var dt=Math.min(64,now-t0)/16.67; t0=now;
+    var y=sy(), dy=y-prevY; prevY=y;
+    if(Math.abs(y-lastY)>6){hdr.classList.toggle("hide-nav",y>lastY&&y>240&&menu.hidden);lastY=y;}
+    if(!reduce && y<innerHeight*1.4){
+      h1.style.transform="translate3d("+(mx*-10)+"px,"+(y*.12)+"px,0)";
+      cross.style.transform="translate3d("+(mx*22)+"px,"+(y*-.08+my*10)+"px,0)";
+    }
+    tracks.forEach(function(tr){
+      if(dy) tr.dir=dy>0?1:-1;
+      tr.x-=(tr.base+Math.min(Math.abs(dy)*.35,14))*dt*tr.dir;
+      var half=tr.el.scrollWidth/2; if(tr.x<=-half) tr.x+=half; if(tr.x>0) tr.x-=half;
+      tr.el.style.transform="translate3d("+tr.x+"px,0,0)";
+    });
+    if(cur){cx+=(tx-cx)*.2;cy+=(ty-cy)*.2;cur.style.transform="translate3d("+cx+"px,"+cy+"px,0)";}
+    var r=stepsEl.getBoundingClientRect(),line=innerHeight*.6,p=(line-r.top)/r.height;p=Math.max(0,Math.min(1,p));
+    stepbar.style.transform="scaleY("+(reduce?1:p)+")";
+    stepLis.forEach(function(li){li.classList.toggle("on",reduce||li.getBoundingClientRect().top<line);});
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
